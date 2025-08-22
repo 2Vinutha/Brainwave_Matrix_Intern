@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Web App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background: #f8f9fa;
+        }
+        h1 {
+            color: #0070f3;
+        }
+        #api-data {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background: #0070f3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #005bb5;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to My Deployed App!</h1>
+    <p>This app is running on Vercel with Express.</p>
+    <button onclick="fetchAPI()">Get API Message</button>
+    <div id="api-data"></div>
+
+    <script>
+        async function fetchAPI() {
+            const res = await fetch('/api');
+            const data = await res.json();
+            document.getElementById('api-data').innerText =
+                `Message: ${data.message} | Time: ${data.timeUtc}`;
+        }
+    </script>
+</body>
+</html>
